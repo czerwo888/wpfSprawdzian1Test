@@ -1,0 +1,84 @@
+﻿<Window x:Class="wpfSprawdzian1Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfSprawdzian1Test"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+        <Window.Resources>
+                
+                <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Width" Value="100"></Setter>
+                        <Setter Property="Height" Value="20"></Setter>
+                </Style>
+                
+                <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Goldenrod"></Setter>
+                        <Setter Property="Foreground" Value="Crimson"></Setter>
+                        <Setter Property="Margin" Value="10 0 0 0"></Setter>
+                        <Setter Property="Width" Value="100"></Setter>
+                </Style>
+        </Window.Resources>
+        
+        <StackPanel Margin="20">
+                
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        
+                        <StackPanel.Resources>
+                                <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Width" Value="100"></Setter>
+                                        <Style.Triggers>
+                                                <MultiTrigger>
+                                                        <MultiTrigger.Conditions>
+                                                                <Condition Property="IsMouseOver" Value="true"></Condition>
+                                                                <Condition Property="IsKeyboardFocused" Value="true"></Condition>
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                        <Setter Property="Width" Value="150"></Setter>
+                                                        <Setter Property="FontSize" Value="20"></Setter>
+                                                </MultiTrigger>
+                                        </Style.Triggers>
+                                </Style>
+                        </StackPanel.Resources>
+                        
+                        <TextBox Name="textBox" TextAlignment="Center"></TextBox>
+                        <Button Name="stworzPrzycisk" Content="Stwórz" Click="StworzPrzycisk_OnClick"></Button>
+                        <ToggleButton>
+                                <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                                <Setter Property="Width" Value="150"></Setter>
+                                                <Setter Property="Foreground" Value="Cyan"></Setter>
+                                                <Style.Triggers>
+                                                        <Trigger Property="IsChecked" Value="true">
+                                                                <Setter Property="Content" Value="Jestem wciśnięty"></Setter>
+                                                                <Setter Property="Background" Value="Purple"></Setter>
+                                                        </Trigger>
+                                                        <Trigger Property="IsChecked" Value="False">
+                                                                <Setter Property="Content" Value="Wciśnij mine"></Setter>
+                                                                <Setter Property="Background" Value="Green"></Setter>
+                                                        </Trigger>
+                                                </Style.Triggers>
+                                        </Style>
+                                </ToggleButton.Style>
+                        </ToggleButton>
+                </StackPanel>
+                
+                <Slider Name="slider" Minimum="10" Maximum="20" ValueChanged="Slider_OnValueChanged" Margin="10 10 10 10" Width="300"></Slider>
+                
+                <WrapPanel Name="nowePrzyciski" Margin="0 10 0 10"></WrapPanel>
+                
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Name="wyswietlTekst" Width="200" Height="20" VerticalAlignment="Center"></TextBlock>
+                        <Button Name="wpiszButton" Content="Wpisz" Click="WpiszButton_OnClick" Margin="10 0 0 0" Width="100">
+                                <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                                <Setter Property="FontSize" Value="20"></Setter>
+                                        </Style>
+                                </Button.Style>
+                        </Button>
+                </StackPanel>
+                
+        </StackPanel>
+</Window>
